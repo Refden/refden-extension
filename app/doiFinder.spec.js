@@ -9,8 +9,7 @@ describe('doiFinder()', () => {
     `;
 
     const actual = doiFinder(text);
-    const expected = ['10.3904/kjim.2017.034'];
 
-    expect(actual).toEqual(expect.arrayContaining(expected));
+    expect(actual[0]).toEqual('10.3904/kjim.2017.034');
   });
 });

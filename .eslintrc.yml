@@ -1,0 +1,28 @@
+plugins:
+  - 'jest'
+
+extends:
+  - 'eslint:recommended'
+  - 'plugin:jest/recommended'
+
+env:
+  browser: true
+  es6: true
+  jest/globals: true
+
+parserOptions:
+  sourceType: module
+
+rules:
+  indent:
+    - error
+    - 2
+  linebreak-style:
+    - error
+    - unix
+  quotes:
+    - error
+    - single
+  semi:
+    - error
+    - always
