@@ -1,15 +1,32 @@
 import doiFinder from './doiFinder';
 
 describe('doiFinder()', () => {
-  it('returns doi', () => {
+  it('returns DOIs', () => {
     const text = `
-    Korean J Intern Med. 2017 Oct 25.
-    doi: 10.3904/kjim.2017.034.
-    [Epub ahead of print]
+      Korean J Intern Med. 2017 Oct 25.
+      doi: 10.3904/kjim.2017.034.
+      [Epub ahead of print]
+      Other doi here-> 10.3389/fgene.2016.00013
     `;
 
     const actual = doiFinder(text);
+    const expected = [
+      '10.3904/kjim.2017.034',
+      '10.3389/fgene.2016.00013',
+    ];
 
-    expect(actual[0]).toEqual('10.3904/kjim.2017.034');
+    expect(actual).toEqual(expected);
+  });
+
+  it('removes DOI repeats', () => {
+    const text = `
+      10.3904/kjim.2017.034
+      10.3904/kjim.2017.034
+    `;
+
+    const actual = doiFinder(text);
+    const expected = ['10.3904/kjim.2017.034'];
+
+    expect(actual).toEqual(expected);
   });
 });
