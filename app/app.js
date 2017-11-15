@@ -1,6 +1,5 @@
-import doiFinder from './doiFinder';
+import informBackgroundTabShouldHavePageAction from './libs/services/informBackgroundTabShouldHavePageAction';
+import findReferences from './libs/listeners/findReferences';
 
-console.log('Started...');
-
-const doi = doiFinder(document.body.innerText);
-console.log('The doi: ', doi);
+informBackgroundTabShouldHavePageAction();
+chrome.runtime.onMessage.addListener(findReferences);

@@ -1,6 +1,6 @@
 import _ from 'lodash/fp';
 
-import { match } from './libs/utils/lodashfp';
+import { match } from '../utils/lodashfp';
 
 const DOI_REGEX = /\b10\.(?:\d+\.*)+[/](?:(?:[^\s.])+\.*)+\b/g;
 
