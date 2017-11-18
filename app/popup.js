@@ -1,13 +1,12 @@
-function setDOIs(dois) {
-  document.getElementById('dois').textContent = dois;
-}
+import { FROM_POPUP__SHOW_REFERENCES } from './libs/messages';
 
-window.addEventListener('DOMContentLoaded', function () {
-  chrome.tabs.query({
-    active: true,
-    currentWindow: true,
-  }, function (tabs) {
-    var message = {from: 'popup', subject: 'DOMInfo'};
-    chrome.tabs.sendMessage(tabs[0].id, message, setDOIs);
-  });
-});
+const setDOIs = dois =>
+  document.getElementById('dois').textContent = dois;
+
+const showReferences = tabs =>
+  chrome.tabs.sendMessage(tabs[0].id, FROM_POPUP__SHOW_REFERENCES, setDOIs);
+
+const listener = () =>
+  chrome.tabs.query({ active: true, currentWindow: true}, showReferences);
+
+window.addEventListener('DOMContentLoaded', listener);
