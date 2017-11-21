@@ -14,7 +14,9 @@
     "default_popup": "popup.html",
     "default_title": "Click here!"
   },
-  "permissions": [],
+  "permissions": [
+     "https://doi.org/"
+  ],
   "content_scripts": [{
     "matches": ["<all_urls>"],
     "js": ["dist/build/app/bundle.js"],
