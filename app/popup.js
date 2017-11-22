@@ -1,19 +1,24 @@
 import axios from 'axios';
+import _ from 'lodash/fp';
 
 import { FROM_POPUP__SHOW_REFERENCES } from './libs/messages';
+import referencesFetcher from './libs/api/referencesFetcher';
 
-const setDOIs = async (dois) => {
-  const response = await axios({
-    method: 'get',
-    url: `https://doi.org/${dois[0]}`,
-    headers: { 'Accept': 'application/json; charset=utf-8' },
+const setReferences = async (dois) => {
+  const titles = _.isEmpty(dois) ? ['No references were found.'] : await referencesFetcher(dois);
+
+  const table = document.getElementById('references-table');
+  table.deleteRow(0);
+
+  titles.forEach(title => {
+    const row = table.insertRow();
+    const cell = row.insertCell(0);
+    cell.textContent = title;
   });
-
-  document.getElementById('dois').textContent = response.data.title;
 }
 
 const showReferences = tabs =>
-  chrome.tabs.sendMessage(tabs[0].id, FROM_POPUP__SHOW_REFERENCES, setDOIs);
+  chrome.tabs.sendMessage(tabs[0].id, FROM_POPUP__SHOW_REFERENCES, setReferences);
 
 const listener = () =>
   chrome.tabs.query({ active: true, currentWindow: true}, showReferences);
