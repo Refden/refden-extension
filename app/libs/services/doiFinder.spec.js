@@ -29,4 +29,15 @@ describe('doiFinder()', () => {
 
     expect(actual).toEqual(expected);
   });
+
+  describe('when no DOIs in text', () => {
+    it('returns an empty array', () => {
+      const text = 'Yo Rocky!';
+
+      const actual = doiFinder(text);
+      const expected = [];
+
+      expect(actual).toEqual(expected);
+    });
+  });
 });
