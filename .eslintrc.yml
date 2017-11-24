@@ -16,6 +16,7 @@ globals:
 
 parserOptions:
   sourceType: module
+  ecmaVersion: 8
 
 rules:
   indent:
