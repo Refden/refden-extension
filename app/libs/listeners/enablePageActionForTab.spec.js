@@ -1,41 +1,64 @@
-import enablePageActionForTab from './enablePageActionForTab';
+import axios from 'axios';
+import MockAdapter from 'axios-mock-adapter';
+
+import * as refden from '../api/refden';
 import { FROM_CONTENT__SHOW_PAGE_ACTION } from '../messages';
+import enablePageActionForTab from './enablePageActionForTab';
 
 describe('enablePageActionForTab()', () => {
-  it('calls chrome.pageAction.show', () => {
+  it('calls chrome.pageAction.show', async () => {
     global.chrome = {
-      pageAction: {
-        show: jest.fn(),
-      }
+      pageAction: { show: jest.fn() }
     };
     const tabId = 1;
     const sender = {
-      tab: {
-        id: tabId,
-      },
+      tab: { id: tabId },
     };
+    refden.getLists = jest.fn(() => Promise.resolve({}));
 
-    enablePageActionForTab(FROM_CONTENT__SHOW_PAGE_ACTION, sender);
+    await enablePageActionForTab(FROM_CONTENT__SHOW_PAGE_ACTION, sender);
 
+    expect(refden.getLists).toHaveBeenCalledTimes(1);
     expect(chrome.pageAction.show).toBeCalledWith(tabId);
   });
 
-  it('doesnt call chrome.pageAction.show when another message passed', () => {
-    global.chrome = {
-      pageAction: {
-        show: jest.fn(),
-      }
-    };
-    const message = 'YOLO';
-    const tabId = 1;
-    const sender = {
-      tab: {
-        id: tabId,
-      },
-    };
+  describe('when request fails', () => {
+    it('shows need login popup', async () => {
+      global.chrome = {
+        pageAction: {
+          show: jest.fn(),
+          setPopup: jest.fn(),
+        },
+      };
+      const tabId = 1;
+      const sender = {
+        tab: { id: tabId },
+      };
+      refden.getLists = jest.fn(() => Promise.reject('Error'));
 
-    enablePageActionForTab(message, sender);
+      await enablePageActionForTab(FROM_CONTENT__SHOW_PAGE_ACTION, sender);
 
-    expect(chrome.pageAction.show).not.toBeCalledWith(tabId);
+      expect(chrome.pageAction.setPopup).toBeCalledWith({
+        tabId,
+        popup: "need-login.html",
+      });
+    });
+  })
+
+  describe('when another message is passed', () => {
+    it('doesnt call chrome.pageAction.show', async () => {
+      global.chrome = {
+        pageAction: { show: jest.fn() }
+      };
+      const message = 'YOLO';
+      const tabId = 1;
+      const sender = {
+        tab: { id: tabId },
+      };
+
+      await enablePageActionForTab(message, sender);
+
+      expect(chrome.pageAction.show).not.toBeCalledWith(tabId);
+    });
   });
 });
