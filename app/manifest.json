@@ -14,6 +14,7 @@
   },
   "permissions": [
     "cookies",
+    "storage",
      "https://doi.org/",
      "https://www.refden.co/"
   ],

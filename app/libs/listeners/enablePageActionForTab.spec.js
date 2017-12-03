@@ -6,20 +6,25 @@ import { FROM_CONTENT__SHOW_PAGE_ACTION } from '../messages';
 import enablePageActionForTab from './enablePageActionForTab';
 
 describe('enablePageActionForTab()', () => {
-  it('calls chrome.pageAction.show', async () => {
+  it('calls chrome.pageAction.show and store lists', async () => {
     global.chrome = {
-      pageAction: { show: jest.fn() }
+      storage: {
+        sync: { set: jest.fn() },
+      },
+      pageAction: { show: jest.fn() },
     };
     const tabId = 1;
     const sender = {
       tab: { id: tabId },
     };
-    refden.getLists = jest.fn(() => Promise.resolve({}));
+    const lists = [{ id: 1, name: 'Cancer' }];
+    refden.getLists = jest.fn(() => Promise.resolve({ data: lists }));
 
     await enablePageActionForTab(FROM_CONTENT__SHOW_PAGE_ACTION, sender);
 
     expect(refden.getLists).toHaveBeenCalledTimes(1);
     expect(chrome.pageAction.show).toBeCalledWith(tabId);
+    expect(chrome.storage.sync.set).toBeCalledWith({ lists });
   });
 
   describe('when request fails', () => {

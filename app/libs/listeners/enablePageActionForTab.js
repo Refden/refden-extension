@@ -8,7 +8,7 @@ const enablePageActionForTab = async (message, sender) => {
 
   try {
     const response = await refden.getLists();
-    console.log(response); // TODO: store lists | response.data ...
+    chrome.storage.sync.set({ lists: response.data });
   }
   catch(error) {
     chrome.pageAction.setPopup({ tabId, popup: "need-login.html" });
