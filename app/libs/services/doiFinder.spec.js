@@ -1,3 +1,5 @@
+import _ from 'lodash/fp';
+
 import doiFinder from './doiFinder';
 
 describe('doiFinder()', () => {
@@ -26,6 +28,17 @@ describe('doiFinder()', () => {
 
     const actual = doiFinder(text);
     const expected = ['10.3904/kjim.2017.034'];
+
+    expect(actual).toEqual(expected);
+  });
+
+  it('only returns 10 results as max', () => {
+    const textWith11dois = _.range(0, 11)
+      .map(value => `10.3904/kjim.2017.0${value}`)
+      .join(' ');
+
+    const actual = doiFinder(textWith11dois).length;
+    const expected = 10;
 
     expect(actual).toEqual(expected);
   });
