@@ -1,6 +1,3 @@
-import axios from 'axios';
-import MockAdapter from 'axios-mock-adapter';
-
 import * as refden from '../api/refden';
 import { FROM_CONTENT__SHOW_PAGE_ACTION } from '../messages';
 import enablePageActionForTab from './enablePageActionForTab';
@@ -45,10 +42,10 @@ describe('enablePageActionForTab()', () => {
 
       expect(chrome.pageAction.setPopup).toBeCalledWith({
         tabId,
-        popup: "need-login.html",
+        popup: 'need-login.html',
       });
     });
-  })
+  });
 
   describe('when another message is passed', () => {
     it('doesnt call chrome.pageAction.show', async () => {
