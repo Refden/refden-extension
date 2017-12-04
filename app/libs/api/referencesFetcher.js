@@ -13,14 +13,17 @@ const isValidResponse = _.flow(
   _.lte(200) && _.gt(300),
 );
 
-const getTitle = _.get('data.title');
+const getInfo = _.flow(
+  _.get('data'),
+  _.pick(['DOI', 'title']),
+);
 
 const referencesFetcher = async (dois) => {
   const responses = await axios.all(dois.map(fecthReference));
 
   return _.flow(
     _.filter(isValidResponse),
-    _.map(getTitle),
+    _.map(getInfo),
   )(responses);
 };
 

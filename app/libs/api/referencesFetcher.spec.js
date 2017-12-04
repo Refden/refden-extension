@@ -9,9 +9,11 @@ describe('referencesFetcher()', () => {
     const secondDoi = '10.1042/CS20100476';
     const mock = new MockAdapter(axios);
     const dataFirstDoi = {
+      DOI: firstDoi,
       title: 'Cellular and molecular biology of aging endothelial cells',
     };
     const dataSecondDoi = {
+      DOI: secondDoi,
       title: 'Aging and vascular endothelial function in humans',
     };
     mock.onGet(`${BASE_URL}/${firstDoi}`).reply(200, dataFirstDoi);
@@ -19,8 +21,8 @@ describe('referencesFetcher()', () => {
 
     const actual = await referencesFetcher([firstDoi, secondDoi]);
     const expected = [
-      'Cellular and molecular biology of aging endothelial cells',
-      'Aging and vascular endothelial function in humans',
+      { DOI: firstDoi, title: 'Cellular and molecular biology of aging endothelial cells' },
+      { DOI: secondDoi, title: 'Aging and vascular endothelial function in humans' },
     ];
 
     expect(actual).toEqual(expected);

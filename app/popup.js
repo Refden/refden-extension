@@ -4,17 +4,28 @@ import _ from 'lodash/fp';
 import { FROM_POPUP__SHOW_REFERENCES } from './libs/messages';
 import referencesFetcher from './libs/api/referencesFetcher';
 
+const appendReference = _.curry(
+  (table, reference) => {
+    const row = table.insertRow();
+    const cell = row.insertCell(0);
+    const htmlContent = `
+      ${reference.title}
+      <button class="add-button" data-doi="${reference.DOI}">
+        Add
+      </button>
+    `;
+
+    cell.innerHTML = htmlContent;
+  }
+);
+
 const setReferences = async (dois) => {
-  const titles = _.isEmpty(dois) ? ['No references were found.'] : await referencesFetcher(dois);
+  const references = _.isEmpty(dois) ? ['No references were found.'] : await referencesFetcher(dois);
 
   const table = document.getElementById('references-table');
   table.deleteRow(0);
 
-  titles.forEach(title => {
-    const row = table.insertRow();
-    const cell = row.insertCell(0);
-    cell.textContent = title;
-  });
+  references.forEach(appendReference(table));
 }
 
 const showReferences = tabs =>
