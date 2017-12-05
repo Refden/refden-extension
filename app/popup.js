@@ -10,7 +10,11 @@ const appendReference = _.curry(
     const cell = row.insertCell(0);
     const htmlContent = `
       ${reference.title}
-      <button class="add-button" data-doi="${reference.DOI}">
+      <button
+        class="add-button"
+        data-doi="${reference.DOI}"
+        data-title="${reference.title}"
+      />
         Add
       </button>
     `;
@@ -28,8 +32,21 @@ const setReferences = async (dois) => {
   references.forEach(appendReference(table));
 }
 
-const showReferences = tabs =>
-  chrome.tabs.sendMessage(tabs[0].id, FROM_POPUP__SHOW_REFERENCES, setReferences);
+const handleOnAdd = event => {
+  if (event.target.tagName !== "BUTTON" && event.target.className !== "add-button") return;
+
+  const { doi, title } = event.target.dataset;
+
+  chrome.storage.sync.set({ selectedReference: { doi, title } });
+  window.location.href = 'views/reference-form.html';
+}
+
+const showReferences = tabs => {
+  const tabId = tabs[0].id;
+  chrome.tabs.sendMessage(tabId, FROM_POPUP__SHOW_REFERENCES, setReferences);
+
+  document.addEventListener('click', handleOnAdd);
+};
 
 const listener = () =>
   chrome.tabs.query({ active: true, currentWindow: true}, showReferences);
