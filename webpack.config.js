@@ -6,6 +6,7 @@ module.exports = {
     'build/app/bundle': './app/app.js',
     'build/background/bundle': './app/background.js',
     'build/popup/bundle': './app/popup.js',
+    'build/views/reference-form/bundle': './app/views/reference-form.js',
   },
   output: {
     path:  path.resolve(__dirname, 'app/dist'),
