@@ -5,15 +5,17 @@
   </head>
   <body style="width: 300px;">
     <form action="" method="post">
+      <input type="hidden" id="doi" name="doi">
+
       <div>
-        Title: <span id="title"></span>
+        Title: <span id="title" name="title"></span>
       </div>
 
       <br>
 
       <div>
 	    <label for="lists">Lists:</label>
-      	<select id="lists" multiple>
+      	<select id="lists" name="lists" multiple>
           <option value="1">One</option>
           <option value="2">Two</option>
           <option value="3">Three</option>
@@ -24,7 +26,7 @@
 
       <div>
       	<label for="notes">Notes:</label>
-	    <textarea id="notes"></textarea>
+	    <textarea id="notes" name="notes"></textarea>
       </div>
 
       <br>

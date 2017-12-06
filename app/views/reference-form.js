@@ -1,5 +1,8 @@
-const ramon = () => chrome.storage.sync.get('selectedReference', storageArea =>
-  document.getElementById('title').innerText = storageArea.selectedReference.title
-);
+const populateForm = () => chrome.storage.sync.get('selectedReference', storageArea => {
+  const { doi, title } = storageArea.selectedReference;
 
-document.addEventListener('DOMContentLoaded', ramon);
+  document.getElementById('doi').value = doi;
+  document.getElementById('title').innerText = title;
+});
+
+document.addEventListener('DOMContentLoaded', populateForm);
