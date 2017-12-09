@@ -1,5 +1,3 @@
-import axios from 'axios';
-
 import { postReference } from '../libs/api/refden';
 
 const populateLists = lists => {
