@@ -24,12 +24,17 @@ const appendReference = _.curry(
 );
 
 const setReferences = async (dois) => {
-  const references = _.isEmpty(dois) ? ['No references were found.'] : await referencesFetcher(dois);
+  const references = await referencesFetcher(dois);
 
   const table = document.getElementById('references-table');
   table.deleteRow(0);
 
-  references.forEach(appendReference(table));
+  if(_.isEmpty(references)) {
+    table.insertRow().innerHTML = 'No references found in this page';
+  }
+  else {
+    references.forEach(appendReference(table));
+  }
 }
 
 const handleOnAdd = event => {
