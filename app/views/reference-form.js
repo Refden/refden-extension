@@ -1,20 +1,41 @@
+import axios from 'axios';
+
+import { postReference } from '../libs/api/refden';
+
 const populateLists = lists => {
   const listSelect = document.getElementById('lists');
 
   lists.forEach(list => {
     const option = document.createElement('option');
     option.textContent = list.name;
-    option.value = list.name;
+    option.value = list.id;
     listSelect.appendChild(option);
   });
 };
 
-const populateForm = () => chrome.storage.sync.get(['selectedReference', 'lists'], storageArea => {
-  const { doi, title } = storageArea.selectedReference;
+const populateForm = () => {
+  chrome.storage.sync.get(['selectedReference', 'lists'], storageArea => {
+    const { doi, title } = storageArea.selectedReference;
 
-  document.getElementById('doi').value = doi;
-  document.getElementById('title').innerText = title;
-  populateLists(storageArea.lists);
-});
+    document.getElementById('doi').value = doi;
+    document.getElementById('title').innerText = title;
+    populateLists(storageArea.lists);
+  });
+};
 
-document.addEventListener('DOMContentLoaded', populateForm);
+const addOnSubmitHandler = () => {
+  const form = document.getElementById('form');
+  form.onsubmit = () => {
+    const formData = new FormData(form);
+    postReference(formData);
+
+    return false;
+  };
+};
+
+const initForm = () => {
+  populateForm();
+  addOnSubmitHandler();
+};
+
+document.addEventListener('DOMContentLoaded', initForm);
