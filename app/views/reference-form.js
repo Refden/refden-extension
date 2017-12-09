@@ -28,6 +28,7 @@ const addOnSubmitHandler = () => {
   form.onsubmit = () => {
     const formData = new FormData(form);
     postReference(formData);
+    window.location.href = '../popup.html';
 
     return false;
   };
