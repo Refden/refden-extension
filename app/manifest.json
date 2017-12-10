@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
-  "name": "Getting started example",
-  "description": "This extension allows the user to change the background color of the current page.",
+  "name": "Refden",
+  "description": "Extension for adding references to refden.co",
   "version": "1.0",
   "background": {
     "persistent": false,
