@@ -1,3 +1,7 @@
+import $ from 'jquery';
+import 'select2';
+import 'select2/dist/css/select2.css';
+
 import { postReference } from '../libs/api/refden';
 
 const populateLists = lists => {
@@ -35,6 +39,8 @@ const addOnSubmitHandler = () => {
 const initForm = () => {
   populateForm();
   addOnSubmitHandler();
+
+  $('#lists').select2();
 };
 
 document.addEventListener('DOMContentLoaded', initForm);
