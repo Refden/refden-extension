@@ -7,19 +7,19 @@ import referencesFetcher from './libs/api/referencesFetcher';
 const appendReference = _.curry(
   (table, reference) => {
     const row = table.insertRow();
-    const cell = row.insertCell(0);
-    const htmlContent = `
-      ${reference.title}
+    const cellTitle = row.insertCell(0);
+    const cellButton = row.insertCell(1);
+
+    cellTitle.innerHTML = reference.title;
+    cellButton.innerHTML = `
       <button
-        class="add-button"
+        class="add-button btn btn-outline-dark btn-sm"
         data-doi="${reference.DOI}"
         data-title="${reference.title}"
       />
         Add
       </button>
     `;
-
-    cell.innerHTML = htmlContent;
   }
 );
 
