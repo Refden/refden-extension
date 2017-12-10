@@ -20,7 +20,8 @@
   "scripts": {
     "start": "webpack --watch --progress --colors",
     "lint": "eslint app/",
-    "test": "jest"
+    "test": "jest",
+    "compress": "zip -r -X app.zip app/"
   },
   "dependencies": {
     "axios": "^0.17.1",
