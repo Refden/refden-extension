@@ -3,6 +3,7 @@ import 'select2';
 import 'select2/dist/css/select2.css';
 
 import { postReference } from '../libs/api/refden';
+import addOnSubmitHandler from './reference-form/addOnSubmitHandler';
 
 const populateLists = lists => {
   const listSelect = document.getElementById('lists');
@@ -25,20 +26,9 @@ const populateForm = () => {
   });
 };
 
-const addOnSubmitHandler = () => {
-  const form = document.getElementById('form');
-  form.onsubmit = () => {
-    const formData = new FormData(form);
-    postReference(formData);
-    window.location.href = '../popup.html';
-
-    return false;
-  };
-};
-
 const initForm = () => {
   populateForm();
-  addOnSubmitHandler();
+  addOnSubmitHandler(document);
 
   $('#lists').select2();
 };
