@@ -2,7 +2,6 @@ import $ from 'jquery';
 import 'select2';
 import 'select2/dist/css/select2.css';
 
-import { postReference } from '../libs/api/refden';
 import addOnSubmitHandler from './reference-form/addOnSubmitHandler';
 
 const populateLists = lists => {
