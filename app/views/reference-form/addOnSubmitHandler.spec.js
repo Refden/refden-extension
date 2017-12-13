@@ -4,8 +4,10 @@ import * as refden from '../../libs/api/refden';
 
 import addOnSubmitHandler from './addOnSubmitHandler';
 
-const buildDocument = () =>
-  (new JSDOM(`<!DOCTYPE html><form id="form"></form>`)).window.document;
+const buildDocument = () => {
+  const dom = new JSDOM('<!DOCTYPE html><form id="form"></form>');
+  return dom.window.document;
+};
 
 describe('addOnSubmitHandler()', () => {
   it('gets the form', () => {
@@ -24,7 +26,7 @@ describe('addOnSubmitHandler()', () => {
       const form = document.getElementById('form');
       const formData = {};
       global.FormData = jest.fn(() => formData);
-      refden.postReference = jest.fn();
+      refden.postReference = jest.fn(() => Promise.resolve({}));
 
       addOnSubmitHandler(document);
       const actual = form.onsubmit();
