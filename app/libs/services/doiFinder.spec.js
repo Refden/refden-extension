@@ -1,6 +1,13 @@
 import _ from 'lodash/fp';
+import { JSDOM } from 'jsdom';
 
 import doiFinder from './doiFinder';
+
+const buildDocument = text => ({
+  body: {
+    innerText: text,
+  }
+});
 
 describe('doiFinder()', () => {
   it('returns DOIs', () => {
@@ -10,11 +17,29 @@ describe('doiFinder()', () => {
       [Epub ahead of print]
       Other doi here-> 10.3389/fgene.2016.00013
     `;
+    const document = buildDocument(text);
 
-    const actual = doiFinder(text);
+    const actual = doiFinder(document);
     const expected = [
       '10.3904/kjim.2017.034',
       '10.3389/fgene.2016.00013',
+    ];
+
+    expect(actual).toEqual(expected);
+  });
+
+  it('picks DOIs from links', () => {
+    const dom = new JSDOM(`
+      <!DOCTYPE html>
+      <a class="doi" href="https://doi.org/10.1016/j.bbr.2013.05.022"></a>
+      <a href="https://google.com"></a>
+    `, { runScripts: 'outside-only' });
+    dom.window.eval('document.body.innerText = ""');
+    const document = dom.window.document;
+
+    const actual = doiFinder(document);
+    const expected = [
+      '10.1016/j.bbr.2013.05.022',
     ];
 
     expect(actual).toEqual(expected);
@@ -25,8 +50,9 @@ describe('doiFinder()', () => {
       10.3904/kjim.2017.034
       10.3904/kjim.2017.034
     `;
+    const document = buildDocument(text);
 
-    const actual = doiFinder(text);
+    const actual = doiFinder(document);
     const expected = ['10.3904/kjim.2017.034'];
 
     expect(actual).toEqual(expected);
@@ -36,8 +62,9 @@ describe('doiFinder()', () => {
     const textWith11dois = _.range(0, 11)
       .map(value => `10.3904/kjim.2017.0${value}`)
       .join(' ');
+    const document = buildDocument(textWith11dois);
 
-    const actual = doiFinder(textWith11dois).length;
+    const actual = doiFinder(document).length;
     const expected = 10;
 
     expect(actual).toEqual(expected);
@@ -46,8 +73,9 @@ describe('doiFinder()', () => {
   describe('when no DOIs in text', () => {
     it('returns an empty array', () => {
       const text = 'Yo Rocky!';
+      const document = buildDocument(text);
 
-      const actual = doiFinder(text);
+      const actual = doiFinder(document);
       const expected = [];
 
       expect(actual).toEqual(expected);
