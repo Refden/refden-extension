@@ -28,17 +28,20 @@ describe('doiFinder()', () => {
     expect(actual).toEqual(expected);
   });
 
-  it('picks DOIs from links', () => {
+  it('picks DOIs from links and shows DOIs from text first', () => {
     const dom = new JSDOM(`
       <!DOCTYPE html>
       <a class="doi" href="https://doi.org/10.1016/j.bbr.2013.05.022"></a>
       <a href="https://google.com"></a>
     `, { runScripts: 'outside-only' });
-    dom.window.eval('document.body.innerText = ""');
+    dom.window.eval(
+      'document.body.innerText = "Other doi here-> 10.3389/fgene.2016.00013"'
+    );
     const document = dom.window.document;
 
     const actual = doiFinder(document);
     const expected = [
+      '10.3389/fgene.2016.00013',
       '10.1016/j.bbr.2013.05.022',
     ];
 
