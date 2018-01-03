@@ -73,6 +73,21 @@ describe('doiFinder()', () => {
     expect(actual).toEqual(expected);
   });
 
+  it('excludes text after "#" char', () => {
+    const text = `
+      doi: 10.3904/kjim.2017.034#AB.
+      other doi: 10.3904/kjim.2017.034#AC
+    `;
+    const document = buildDocument(text);
+
+    const actual = doiFinder(document);
+    const expected = [
+      '10.3904/kjim.2017.034',
+    ];
+
+    expect(actual).toEqual(expected);
+  });
+
   describe('when no DOIs in text', () => {
     it('returns an empty array', () => {
       const text = 'Yo Rocky!';
