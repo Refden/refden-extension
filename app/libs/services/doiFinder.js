@@ -2,7 +2,7 @@ import _ from 'lodash/fp';
 
 import { match } from '../utils/lodashfp';
 
-const DOI_REGEX = /\b10\.(?:\d+\.*)+[/](?:(?:[^\s.#])+\.*)+\b/g;
+const DOI_REGEX = /10\.(?:\d+\.*)+[/](?:(?:[^\s.#])+\.*)+\b/g;
 
 const doisFromText = _.flow(
   _.get('body.innerText'),

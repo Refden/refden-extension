@@ -88,6 +88,20 @@ describe('doiFinder()', () => {
     expect(actual).toEqual(expected);
   });
 
+  it('can find DOIs with text behind', () => {
+    const text = `
+      DOI10.3904/kjim.2017.034#AB.
+    `;
+    const document = buildDocument(text);
+
+    const actual = doiFinder(document);
+    const expected = [
+      '10.3904/kjim.2017.034',
+    ];
+
+    expect(actual).toEqual(expected);
+  });
+
   describe('when no DOIs in text', () => {
     it('returns an empty array', () => {
       const text = 'Yo Rocky!';
