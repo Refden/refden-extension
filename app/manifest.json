@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "Refden",
   "description": "Extension for adding references to refden.co",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "background": {
     "persistent": false,
     "scripts": ["dist/build/background/bundle.js"]
