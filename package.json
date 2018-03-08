@@ -23,7 +23,7 @@
     "start": "webpack --watch --progress --colors",
     "lint": "eslint app/",
     "test": "jest",
-    "compress": "zip -r -X app.zip app/"
+    "compress": "webpack && zip -r -X app.zip app/"
   },
   "dependencies": {
     "axios": "^0.18.0",
