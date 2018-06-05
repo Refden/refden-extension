@@ -17,16 +17,13 @@ module.exports = {
       {
         test: /\.css$/,
         use: [ 'style-loader', 'css-loader' ]
-      }
-    ],
-    loaders: [
+      },
       {
         test: /\.js$/,
         loader: 'babel-loader'
-      }
-    ]
+      },
+    ],
   },
-  devtool: 'source-map',
   plugins: [
     new WebpackNotifierPlugin(),
   ],
