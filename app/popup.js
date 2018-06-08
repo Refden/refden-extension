@@ -1,4 +1,3 @@
-import axios from 'axios';
 import _ from 'lodash/fp';
 
 import { FROM_POPUP__SHOW_REFERENCES } from './libs/messages';
@@ -11,15 +10,20 @@ const appendReference = _.curry(
     const cellButton = row.insertCell(1);
 
     cellTitle.innerHTML = reference.title;
-    cellButton.innerHTML = `
-      <button
-        class="add-button btn btn-outline-dark btn-sm"
-        data-doi="${reference.DOI}"
-        data-title="${reference.title}"
-      />
-        Add
-      </button>
-    `;
+
+    if (reference.present) {
+      cellButton.innerHTML = 'Added'
+    } else {
+      cellButton.innerHTML = `
+        <button
+          class="add-button btn btn-outline-dark btn-sm"
+          data-doi="${reference.DOI}"
+          data-title="${reference.title}"
+        />
+          Add
+        </button>
+      `;
+    }
   }
 );
 

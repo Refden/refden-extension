@@ -2,9 +2,13 @@ import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 
 import referencesFetcher, { BASE_URL } from './referencesFetcher';
+import { REFERENCES_URL } from './refden';
+
+const mockRefdenPresence = (mock, doi, present) =>
+  mock.onGet(REFERENCES_URL, { params: { doi } }).reply(200, { doi, present });
 
 describe('referencesFetcher()', () => {
-  it('returns titles for DOIs', async () => {
+  it('returns titles and presence status for DOIs', async () => {
     const firstDoi = '10.1016/j.yjmcc.2015.01.021';
     const secondDoi = '10.1042/CS20100476';
     const mock = new MockAdapter(axios);
@@ -18,11 +22,21 @@ describe('referencesFetcher()', () => {
     };
     mock.onGet(`${BASE_URL}/${firstDoi}`).reply(200, dataFirstDoi);
     mock.onGet(`${BASE_URL}/${secondDoi}`).reply(200, dataSecondDoi);
+    mockRefdenPresence(mock, firstDoi, true);
+    mockRefdenPresence(mock, secondDoi, false);
 
     const actual = await referencesFetcher([firstDoi, secondDoi]);
     const expected = [
-      { DOI: firstDoi, title: 'Cellular and molecular biology of aging endothelial cells' },
-      { DOI: secondDoi, title: 'Aging and vascular endothelial function in humans' },
+      {
+        DOI: firstDoi,
+        title: 'Cellular and molecular biology of aging endothelial cells',
+        present: true,
+      },
+      {
+        DOI: secondDoi,
+        title: 'Aging and vascular endothelial function in humans',
+        present: false,
+      },
     ];
 
     expect(actual).toEqual(expected);

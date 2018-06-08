@@ -15,6 +15,7 @@ describe('doiFinder()', () => {
       Korean J Intern Med. 2017 Oct 25.
       doi: 10.3904/kjim.2017.034.
       [Epub ahead of print]
+      10.1016/S0140-6736(07)61127-1
       Other doi here-> 10.3389/fgene.2016.00013
     `;
     const document = buildDocument(text);
@@ -22,6 +23,7 @@ describe('doiFinder()', () => {
     const actual = doiFinder(document);
     const expected = [
       '10.3904/kjim.2017.034',
+      '10.1016/S0140-6736(07)61127-1',
       '10.3389/fgene.2016.00013',
     ];
 
