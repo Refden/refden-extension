@@ -34,7 +34,7 @@ const setReferences = async (dois) => {
   table.deleteRow(0);
 
   if(_.isEmpty(references)) {
-    table.insertRow().innerHTML = 'No references found in this page';
+    table.insertRow().insertCell(0).innerHTML = 'No references found in this page!';
   }
   else {
     references.forEach(appendReference(table));
