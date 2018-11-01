@@ -15,7 +15,7 @@
     "eslint-plugin-jest": "^21.24.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^23.6.0",
-    "jsdom": "^12.2.0",
+    "jsdom": "^13.0.0",
     "style-loader": "^0.23.1",
     "webpack": "^4.20.2",
     "webpack-cli": "^3.1.2",
