@@ -31,6 +31,7 @@ const referencesFetcher = async (dois) => {
   const responses = await axios.all(dois.map(fetchReference));
   const references = _.flow(
     _.filter(isValidResponse),
+    _.filter(_.has('data.DOI')),
     _.map(getInfo),
   )(responses);
 

@@ -52,4 +52,15 @@ describe('referencesFetcher()', () => {
 
     expect(actual).toEqual(expected);
   });
+
+  it('filters out a doi not returning DOI data', async () => {
+    const doi = '10.1371/journal.pbio.0000005';
+    const mock = new MockAdapter(axios);
+    mock.onGet(`${BASE_URL}/${doi}`).reply(200, { html: 'xx' });
+
+    const actual = await referencesFetcher([doi]);
+    const expected = [];
+
+    expect(actual).toEqual(expected);
+  });
 });
