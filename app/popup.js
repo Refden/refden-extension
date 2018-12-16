@@ -46,18 +46,22 @@ const handleOnAdd = event => {
 
   const { doi, title } = event.target.dataset;
 
-  chrome.storage.sync.set({ selectedReference: { doi, title } });
+  browser.storage.sync.set({ selectedReference: { doi, title } });
   window.location.href = 'views/reference-form.html';
 }
 
 const showReferences = tabs => {
   const tabId = tabs[0].id;
-  chrome.tabs.sendMessage(tabId, FROM_POPUP__SHOW_REFERENCES, setReferences);
+  browser.tabs.sendMessage(tabId, FROM_POPUP__SHOW_REFERENCES, setReferences);
 
   document.addEventListener('click', handleOnAdd);
 };
 
 const listener = () =>
-  chrome.tabs.query({ active: true, currentWindow: true}, showReferences);
+  browser.tabs.query({ active: true, currentWindow: true}, showReferences);
+
+window.browser = (function () {
+  return window.browser || window.chrome;
+})();
 
 window.addEventListener('DOMContentLoaded', listener);

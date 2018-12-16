@@ -3,8 +3,8 @@ import { FROM_CONTENT__SHOW_PAGE_ACTION } from '../messages';
 import enablePageActionForTab from './enablePageActionForTab';
 
 describe('enablePageActionForTab()', () => {
-  it('calls chrome.pageAction.show and store lists', async () => {
-    global.chrome = {
+  it('calls browser.pageAction.show and store lists', async () => {
+    global.browser = {
       storage: {
         sync: { set: jest.fn() },
       },
@@ -20,13 +20,13 @@ describe('enablePageActionForTab()', () => {
     await enablePageActionForTab(FROM_CONTENT__SHOW_PAGE_ACTION, sender);
 
     expect(refden.getLists).toHaveBeenCalledTimes(1);
-    expect(chrome.pageAction.show).toBeCalledWith(tabId);
-    expect(chrome.storage.sync.set).toBeCalledWith({ lists });
+    expect(browser.pageAction.show).toBeCalledWith(tabId);
+    expect(browser.storage.sync.set).toBeCalledWith({ lists });
   });
 
   describe('when request fails', () => {
     it('shows need login popup', async () => {
-      global.chrome = {
+      global.browser = {
         pageAction: {
           show: jest.fn(),
           setPopup: jest.fn(),
@@ -40,7 +40,7 @@ describe('enablePageActionForTab()', () => {
 
       await enablePageActionForTab(FROM_CONTENT__SHOW_PAGE_ACTION, sender);
 
-      expect(chrome.pageAction.setPopup).toBeCalledWith({
+      expect(browser.pageAction.setPopup).toBeCalledWith({
         tabId,
         popup: 'need-login.html',
       });
@@ -48,8 +48,8 @@ describe('enablePageActionForTab()', () => {
   });
 
   describe('when another message is passed', () => {
-    it('doesnt call chrome.pageAction.show', async () => {
-      global.chrome = {
+    it('doesnt call browser.pageAction.show', async () => {
+      global.browser = {
         pageAction: { show: jest.fn() }
       };
       const message = 'YOLO';
@@ -60,7 +60,7 @@ describe('enablePageActionForTab()', () => {
 
       await enablePageActionForTab(message, sender);
 
-      expect(chrome.pageAction.show).not.toBeCalledWith(tabId);
+      expect(browser.pageAction.show).not.toBeCalledWith(tabId);
     });
   });
 });

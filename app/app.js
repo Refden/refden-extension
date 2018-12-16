@@ -1,5 +1,9 @@
 import informBackgroundTabShouldHavePageAction from './libs/services/informBackgroundTabShouldHavePageAction';
 import findReferences from './libs/listeners/findReferences';
 
+window.browser = (function () {
+  return window.browser || window.chrome;
+})();
+
 informBackgroundTabShouldHavePageAction();
-chrome.runtime.onMessage.addListener(findReferences);
+browser.runtime.onMessage.addListener(findReferences);

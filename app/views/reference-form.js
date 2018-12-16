@@ -16,7 +16,7 @@ const populateLists = lists => {
 };
 
 const populateForm = () => {
-  chrome.storage.sync.get(['selectedReference', 'lists'], storageArea => {
+  browser.storage.sync.get(['selectedReference', 'lists'], storageArea => {
     const { doi, title } = storageArea.selectedReference;
 
     document.getElementById('doi').value = doi;
@@ -31,5 +31,9 @@ const initForm = () => {
 
   $('#lists').select2();
 };
+
+window.browser = (function () {
+  return window.browser || window.chrome;
+})();
 
 document.addEventListener('DOMContentLoaded', initForm);

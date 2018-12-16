@@ -11,7 +11,7 @@ env:
   jest/globals: true
 
 globals:
-  chrome: true
+  browser: true
   global: true
 
 parserOptions:
