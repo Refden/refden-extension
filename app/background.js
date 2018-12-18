@@ -1,7 +1,6 @@
 import enablePageActionForTab from './libs/listeners/enablePageActionForTab';
+import setupBrowser from './libs/utils/setupBrowser';
 
-window.browser = (function () {
-  return window.browser || window.chrome;
-})();
+setupBrowser();
 
 browser.runtime.onMessage.addListener(enablePageActionForTab);

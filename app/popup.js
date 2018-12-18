@@ -2,6 +2,9 @@ import _ from 'lodash/fp';
 
 import { FROM_POPUP__SHOW_REFERENCES } from './libs/messages';
 import referencesFetcher from './libs/api/referencesFetcher';
+import setupBrowser from './libs/utils/setupBrowser';
+
+setupBrowser();
 
 const appendReference = _.curry(
   (table, reference) => {
@@ -59,9 +62,5 @@ const showReferences = tabs => {
 
 const listener = () =>
   browser.tabs.query({ active: true, currentWindow: true}, showReferences);
-
-window.browser = (function () {
-  return window.browser || window.chrome;
-})();
 
 window.addEventListener('DOMContentLoaded', listener);

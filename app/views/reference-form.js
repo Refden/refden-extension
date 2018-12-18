@@ -3,6 +3,9 @@ import 'select2';
 import 'select2/dist/css/select2.css';
 
 import addOnSubmitHandler from './reference-form/addOnSubmitHandler';
+import setupBrowser from '../libs/utils/setupBrowser';
+
+setupBrowser();
 
 const populateLists = lists => {
   const listSelect = document.getElementById('lists');
@@ -31,9 +34,5 @@ const initForm = () => {
 
   $('#lists').select2();
 };
-
-window.browser = (function () {
-  return window.browser || window.chrome;
-})();
 
 document.addEventListener('DOMContentLoaded', initForm);
