@@ -15,6 +15,11 @@ const isValidResponse = _.flow(
   _.lte(200) && _.gt(300),
 );
 
+const hasTitle = _.flow(
+  _.get('data.title'),
+  _.negate(_.isEmpty),
+);
+
 const getInfo = _.flow(
   _.get('data'),
   _.pick(['DOI', 'title']),
@@ -32,6 +37,7 @@ const referencesFetcher = async (dois) => {
   const references = _.flow(
     _.filter(isValidResponse),
     _.filter(_.has('data.DOI')),
+    _.filter(hasTitle),
     _.uniqBy('data.DOI'),
     _.map(getInfo),
   )(responses);

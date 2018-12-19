@@ -88,4 +88,15 @@ describe('referencesFetcher()', () => {
 
     expect(actual).toEqual(expected);
   });
+
+  it('filters out a doi not returning title', async () => {
+    const doi = '10.1371/journal.pbio.0000005';
+    const mock = new MockAdapter(axios);
+    mock.onGet(`${BASE_URL}/${doi}`).reply(200, { html: 'xx', DOI: doi, title: [] });
+
+    const actual = await referencesFetcher([doi]);
+    const expected = [];
+
+    expect(actual).toEqual(expected);
+  });
 });
