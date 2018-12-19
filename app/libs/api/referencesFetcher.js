@@ -32,6 +32,7 @@ const referencesFetcher = async (dois) => {
   const references = _.flow(
     _.filter(isValidResponse),
     _.filter(_.has('data.DOI')),
+    _.uniqBy('data.DOI'),
     _.map(getInfo),
   )(responses);
 

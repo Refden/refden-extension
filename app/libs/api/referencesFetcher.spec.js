@@ -42,6 +42,31 @@ describe('referencesFetcher()', () => {
     expect(actual).toEqual(expected);
   });
 
+  it('removes duplicates', async () => {
+    const firstDoi = '10.1016/j.yjmcc.2015.01.021';
+    const secondDoi = '10.1016/j.yjmcc.2015.01.021?x=a';
+    const mock = new MockAdapter(axios);
+    const dataDoi = {
+      DOI: firstDoi,
+      title: 'Da title',
+    };
+    mock.onGet(`${BASE_URL}/${firstDoi}`).reply(200, dataDoi);
+    mock.onGet(`${BASE_URL}/${secondDoi}`).reply(200, dataDoi);
+    mockRefdenPresence(mock, firstDoi, true);
+    mockRefdenPresence(mock, secondDoi, true);
+
+    const actual = await referencesFetcher([firstDoi, secondDoi]);
+    const expected = [
+      {
+        DOI: firstDoi,
+        title: 'Da title',
+        present: true,
+      },
+    ];
+
+    expect(actual).toEqual(expected);
+  });
+
   it('filters out a doi returning 404', async () => {
     const doi = '10.1371/journal.pbio.0000005';
     const mock = new MockAdapter(axios);
