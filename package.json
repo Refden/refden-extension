@@ -26,7 +26,9 @@
     "lint": "eslint app/",
     "test": "jest",
     "test:watch": "jest --watch",
-    "compress": "webpack --mode=production && zip -r -X app.zip app/"
+    "compress": "webpack --mode=production && zip -r -X app.zip app/",
+    "manifest:to-firefox": "cp app/manifest.firefox.json app/manifest.json",
+    "manifest:to-chrome":  "cp app/manifest.chrome.json app/manifest.json"
   },
   "dependencies": {
     "axios": "^0.18.0",

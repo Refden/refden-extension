@@ -8,6 +8,10 @@ Refden browser extension for Chrome & Firefox.
 
 - You may need to reload the extension when making changes in JS code.
 
+### Firefox
+
+Go to `about:debugging` and load temporary the extension.
+
 ## Deploy
 
 ### Firefox
