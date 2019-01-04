@@ -12,10 +12,10 @@
     "babel-preset-env": "^1.6.1",
     "css-loader": "^0.28.11",
     "eslint": "^5.6.1",
-    "eslint-plugin-jest": "^21.24.0",
+    "eslint-plugin-jest": "^22.1.2",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^23.6.0",
-    "jsdom": "^12.2.0",
+    "jsdom": "^13.1.0",
     "style-loader": "^0.23.1",
     "webpack": "^4.20.2",
     "webpack-cli": "^3.1.2",
@@ -28,7 +28,7 @@
     "test:watch": "jest --watch",
     "compress": "webpack --mode=production && zip -r -X app.zip app/",
     "manifest:to-firefox": "cp app/manifest.firefox.json app/manifest.json",
-    "manifest:to-chrome":  "cp app/manifest.chrome.json app/manifest.json"
+    "manifest:to-chrome": "cp app/manifest.chrome.json app/manifest.json"
   },
   "dependencies": {
     "axios": "^0.18.0",

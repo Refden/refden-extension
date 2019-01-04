@@ -17,7 +17,7 @@ describe('addOnSubmitHandler()', () => {
 
     addOnSubmitHandler(document);
 
-    expect(document.getElementById).toBeCalledWith('form');
+    expect(document.getElementById).toHaveBeenCalledWith('form');
   });
 
   describe('form.onsubmit()', () => {
@@ -32,8 +32,8 @@ describe('addOnSubmitHandler()', () => {
       const actual = form.onsubmit();
 
       expect(actual).toBe(false);
-      expect(global.FormData).toBeCalledWith(form);
-      expect(refden.postReference).toBeCalledWith(formData);
+      expect(global.FormData).toHaveBeenCalledWith(form);
+      expect(refden.postReference).toHaveBeenCalledWith(formData);
     });
   });
 });

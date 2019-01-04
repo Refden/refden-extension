@@ -20,8 +20,8 @@ describe('enablePageActionForTab()', () => {
     await enablePageActionForTab(FROM_CONTENT__SHOW_PAGE_ACTION, sender);
 
     expect(refden.getLists).toHaveBeenCalledTimes(1);
-    expect(browser.pageAction.show).toBeCalledWith(tabId);
-    expect(browser.storage.sync.set).toBeCalledWith({ lists });
+    expect(browser.pageAction.show).toHaveBeenCalledWith(tabId);
+    expect(browser.storage.sync.set).toHaveBeenCalledWith({ lists });
   });
 
   describe('when request fails', () => {
@@ -40,7 +40,7 @@ describe('enablePageActionForTab()', () => {
 
       await enablePageActionForTab(FROM_CONTENT__SHOW_PAGE_ACTION, sender);
 
-      expect(browser.pageAction.setPopup).toBeCalledWith({
+      expect(browser.pageAction.setPopup).toHaveBeenCalledWith({
         tabId,
         popup: 'need-login.html',
       });
@@ -60,7 +60,7 @@ describe('enablePageActionForTab()', () => {
 
       await enablePageActionForTab(message, sender);
 
-      expect(browser.pageAction.show).not.toBeCalledWith(tabId);
+      expect(browser.pageAction.show).not.toHaveBeenCalledWith(tabId);
     });
   });
 });
