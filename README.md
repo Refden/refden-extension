@@ -16,6 +16,6 @@ Go to `about:debugging` and load temporary the extension.
 
 ### Firefox
 
-- https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Package_your_extension_
+- [Package extension](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Package_your_extension_)
 - Rename `manifest.firefox.json` to `manifest.json`
 - Compress app folder and submit
