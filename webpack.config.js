@@ -9,18 +9,18 @@ module.exports = {
     'build/views/reference-form/bundle': './app/views/reference-form.js',
   },
   output: {
-    path:  path.resolve(__dirname, 'app/dist'),
-    filename: '[name].js'
+    path: path.resolve(__dirname, 'app/dist'),
+    filename: '[name].js',
   },
   module: {
     rules: [
       {
         test: /\.css$/,
-        use: [ 'style-loader', 'css-loader' ]
+        use: ['style-loader', 'css-loader'],
       },
       {
         test: /\.js$/,
-        loader: 'babel-loader'
+        loader: 'babel-loader',
       },
     ],
   },

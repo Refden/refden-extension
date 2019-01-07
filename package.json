@@ -4,23 +4,6 @@
   "main": "index.js",
   "author": "Mario Perez <mapreal19@gmail.com>",
   "license": "MIT",
-  "devDependencies": {
-    "@babel/core": "^7.1.2",
-    "axios-mock-adapter": "^1.10.0",
-    "babel-jest": "^23.6.0",
-    "babel-loader": "^8.0.4",
-    "babel-preset-env": "^1.6.1",
-    "css-loader": "^2.1.0",
-    "eslint": "^5.6.1",
-    "eslint-plugin-jest": "^22.1.2",
-    "identity-obj-proxy": "^3.0.0",
-    "jest": "^23.6.0",
-    "jsdom": "^13.1.0",
-    "style-loader": "^0.23.1",
-    "webpack": "^4.20.2",
-    "webpack-cli": "^3.1.2",
-    "webpack-notifier": "^1.5.1"
-  },
   "scripts": {
     "start": "webpack --watch --progress --colors --mode=development",
     "lint": "eslint app/",
@@ -37,10 +20,33 @@
     "select2": "^4.0.6-rc.1",
     "toastr": "^2.1.4"
   },
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.2.3",
+    "axios-mock-adapter": "^1.10.0",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^23.6.0",
+    "babel-loader": "^8.0.4",
+    "css-loader": "^2.1.0",
+    "eslint": "^5.6.1",
+    "eslint-plugin-jest": "^22.1.2",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^23.6.0",
+    "jsdom": "^13.1.0",
+    "regenerator-runtime": "^0.13.1",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.20.2",
+    "webpack-cli": "^3.1.2",
+    "webpack-notifier": "^1.5.1"
+  },
+  "browserslist": "> 0.25%, not dead",
   "jest": {
     "setupFiles": [
       "./app/libs/tests/setup.js"
     ],
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest"
+    },
     "moduleNameMapper": {
       "\\.css$": "identity-obj-proxy"
     }
