@@ -38,7 +38,7 @@
     "style-loader": "^0.23.1",
     "webpack": "^4.20.2",
     "webpack-cli": "^3.2.1",
-    "webpack-notifier": "^1.5.1"
+    "webpack-notifier": "^1.8.0"
   },
   "browserslist": "> 0.25%, not dead",
   "jest": {
