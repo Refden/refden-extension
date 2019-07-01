@@ -14,7 +14,7 @@
     "manifest:to-chrome": "cp app/manifest.chrome.json app/manifest.json"
   },
   "dependencies": {
-    "@sentry/browser": "^4.4.2",
+    "@sentry/browser": "^5.4.3",
     "axios": "^0.18.1",
     "jquery": "^3.4.0",
     "lodash": "^4.17.11",
