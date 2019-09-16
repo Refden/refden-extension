@@ -3,7 +3,7 @@
   "name": "Refden",
   "author": "Refden",
   "description": "Extension for adding references to refden.co",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "applications": {
     "gecko": {
       "id": "support@refden.co"
