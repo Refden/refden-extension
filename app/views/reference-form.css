@@ -1,3 +1,16 @@
 .select2-results {
   font-size: 80%;
 }
+
+textarea.notes {
+  background: linear-gradient(0deg, #fffad2, #ffffe6);
+  background-color: #fffcee !important;
+  border: 1px solid #f0f0c8 !important;
+  border-radius: 5px;
+  box-shadow: none;
+  font-size: 14px;
+  outline: none;
+  padding: 10px;
+  resize: none;
+  width: 100%;
+}

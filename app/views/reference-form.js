@@ -1,6 +1,7 @@
 import $ from 'jquery';
 import 'select2';
 import 'select2/dist/css/select2.css';
+import autosize from 'autosize';
 
 import addOnSubmitHandler from './reference-form/addOnSubmitHandler';
 import setupBrowser from '../libs/utils/setupBrowser';
@@ -33,6 +34,7 @@ const initForm = () => {
   addOnSubmitHandler(document);
 
   $('#lists').select2();
+  autosize($('textarea'));
 };
 
 document.addEventListener('DOMContentLoaded', initForm);
