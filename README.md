@@ -14,6 +14,12 @@ Go to `about:debugging` and load temporary the extension.
 
 ## Deploy
 
+### Chrome
+
+- Guide: https://developer.chrome.com/webstore/publish
+- Run `webpack:build`
+- Compress app folder and submit
+
 ### Firefox
 
 - [Package extension](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Package_your_extension_)
