@@ -15,7 +15,7 @@ const appendReference = _.curry(
     cellTitle.innerHTML = reference.title;
 
     if (reference.present) {
-      cellButton.innerHTML = 'Added'
+      cellButton.innerHTML = 'Added';
     } else {
       cellButton.innerHTML = `
         <button
@@ -42,16 +42,16 @@ const setReferences = async (dois) => {
   else {
     references.forEach(appendReference(table));
   }
-}
+};
 
 const handleOnAdd = event => {
-  if (event.target.tagName !== "BUTTON" && event.target.className !== "add-button") return;
+  if (event.target.tagName !== 'BUTTON' && event.target.className !== 'add-button') return;
 
   const { doi, title } = event.target.dataset;
 
   browser.storage.sync.set({ selectedReference: { doi, title } });
   window.location.href = 'views/reference-form.html';
-}
+};
 
 const showReferences = tabs => {
   const tabId = tabs[0].id;
