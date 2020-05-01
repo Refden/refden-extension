@@ -33,7 +33,7 @@
     "eslint": "^6.8.0",
     "eslint-plugin-jest": "^23.6.0",
     "identity-obj-proxy": "^3.0.0",
-    "jest": "^25.1.0",
+    "jest": "^25.5.3",
     "jsdom": "^16.0.1",
     "regenerator-runtime": "^0.13.1",
     "style-loader": "^1.1.3",
