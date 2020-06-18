@@ -17,8 +17,8 @@ Go to `about:debugging` and load temporary the extension.
 ### Chrome
 
 - Guide: https://developer.chrome.com/webstore/publish
-- Run `webpack:build`
-- Compress app folder and submit
+- Run `yarn:compress` (Webpack in production & compress app folder)
+- Submit
 
 ### Firefox
 
