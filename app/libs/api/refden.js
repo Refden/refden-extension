@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = 'https://www.refden.co/api/';
+const BASE_URL = 'https://www.refden.com/api/';
 
 const buildUrl = path => `${BASE_URL}${path}`;
 
