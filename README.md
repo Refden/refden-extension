@@ -25,3 +25,4 @@ Go to `about:debugging` and load temporary the extension.
 - [Package extension](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Package_your_extension_)
 - Rename `manifest.firefox.json` to `manifest.json`: `yarn manifest:to-firefox`
 - Compress files with app folder and submit: `yarn web-ext build -s app`
+- Provide source code from Github.
