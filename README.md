@@ -6,11 +6,17 @@ Refden browser extension for Chrome & Firefox.
 
 ## Development
 
-- You may need to reload the extension when making changes in JS code.
+1) Run `yarn start`
+2) Run `yarn manifest:to-chrome`
+3) In chrome://extensions/ choose "load unpacked" and select app/ directory.
 
 ### Firefox
 
 Go to `about:debugging` and load temporary the extension.
+
+### Notes 
+
+- You may need to reload the extension when making changes in JS code.
 
 ## Deploy
 
@@ -26,3 +32,8 @@ Go to `about:debugging` and load temporary the extension.
 - Rename `manifest.firefox.json` to `manifest.json`: `yarn manifest:to-firefox`
 - Compress files with app folder and submit: `yarn web-ext build -s app`
 - Provide source code from Github.
+
+## Notes
+
+- Alternative api endpoint: https://api.crossref.org/works/10.5555/487hjd 
+(From: https://www.crossref.org/education/retrieve-metadata/rest-api/a-non-technical-introduction-to-our-api/)
