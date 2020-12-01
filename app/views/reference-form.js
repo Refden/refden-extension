@@ -14,7 +14,7 @@ const populateLists = lists => {
   lists.forEach(list => {
     const option = document.createElement('option');
     option.textContent = list.name;
-    option.value = list.id;
+    option.value = list.name;
     listSelect.appendChild(option);
   });
 };
@@ -33,7 +33,7 @@ const initForm = () => {
   populateForm();
   addOnSubmitHandler(document);
 
-  $('#lists').select2();
+  $('#lists').select2({ tags: true });
   autosize($('textarea'));
 };
 
