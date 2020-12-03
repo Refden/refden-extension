@@ -12,7 +12,7 @@ Refden browser extension for Chrome & Firefox.
 
 ### Firefox
 
-Go to `about:debugging` and load temporary the extension.
+Go to `about:debugging` and load temporary the extension or run `yarn web-ext run --verbose`.
 
 ### Notes 
 
