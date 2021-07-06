@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@sentry/browser": "^5.11.1",
-    "autosize": "^4.0.2",
+    "autosize": "^5.0.1",
     "axios": "^0.21.1",
     "jquery": "^3.5.1",
     "lodash": "^4.17.13",
