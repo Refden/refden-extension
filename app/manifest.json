@@ -23,7 +23,6 @@
     "default_title": "Refden"
   },
   "permissions": [
-    "contextMenus",
     "cookies",
     "storage",
      "https://doi.org/",
