@@ -5,7 +5,7 @@ setupBrowser();
 
 browser.runtime.onMessage.addListener(enablePageActionForTab);
 
-var searchTerapeak = function(word){
+var saveReference = function(word){
     var query = word.selectionText;
     // TODO open form with query as a title
 };
@@ -16,4 +16,4 @@ browser.contextMenus.create({
     contexts:["selection"],
 });
 
-browser.contextMenus.onClicked.addListener(searchTerapeak);
+browser.contextMenus.onClicked.addListener(saveReference);
