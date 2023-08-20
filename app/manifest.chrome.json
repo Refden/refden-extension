@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "Refden",
   "description": "Extension for adding references to refden.com",
-  "version": "3.0.1",
+  "version": "3.1.0",
   "background": {
     "persistent": false,
     "scripts": ["dist/build/background/bundle.js"]
@@ -18,7 +18,6 @@
     "default_title": "Refden"
   },
   "permissions": [
-    "cookies",
     "storage",
      "https://doi.org/",
      "https://www.refden.co/",
