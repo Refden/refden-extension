@@ -1,46 +1,45 @@
-import axios from 'axios';
 import _ from 'lodash/fp';
 
 import * as refden from '../api/refden';
 
 export const BASE_URL = 'https://doi.org';
 
-const fetchReference = doi => axios({
+const fetchReference = doi => fetch(`${BASE_URL}/${doi}`, {
   headers: {'Accept': 'application/json; charset=utf-8'},
-  url: `${BASE_URL}/${doi}`,
-}).catch(error => error);
+})
+  .then(response => response.ok ? response.json() : Promise.reject('Error'))
+  .catch(error => ({error}));
 
-const isValidResponse = _.flow(
-  _.get('status'),
-  _.lte(200) && _.gt(300),
-);
+const isValidResponse = response => response && !response.error;
 
 const hasTitle = _.flow(
-  _.get('data.title'),
+  _.get('title'),
   _.negate(_.isEmpty),
 );
 
-const getInfo = _.flow(
-  _.get('data'),
-  _.pick(['DOI', 'title']),
-);
+const getInfo = _.pick(['DOI', 'title']);
 
-const withRefdenPresence = (references) =>
+const withRefdenPresence = async (references) =>
   Promise.all(references.map(async (reference) => {
-    const response = await refden.getReferencePresence(reference.DOI);
-    reference.present = response.data.present;
+    try {
+      const response = await refden.getReferencePresence(reference.DOI);
+      reference.present = response.present;
+    } catch (error) {
+      reference.present = false;
+    }
     return reference;
   }));
 
 const referencesFetcher = async (dois) => {
-  const responses = await axios.all(dois.map(fetchReference));
+  const responses = await Promise.all(dois.map(fetchReference));
+  const validResponses = responses.filter(isValidResponse);
+
   const references = _.flow(
-    _.filter(isValidResponse),
-    _.filter(_.has('data.DOI')),
+    _.filter(_.has('DOI')),
     _.filter(hasTitle),
-    _.uniqBy('data.DOI'),
+    _.uniqBy('DOI'),
     _.map(getInfo),
-  )(responses);
+  )(validResponses);
 
   return withRefdenPresence(references);
 };

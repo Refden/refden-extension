@@ -3,6 +3,7 @@ import _ from 'lodash/fp';
 import { FROM_POPUP__SHOW_REFERENCES } from './libs/messages';
 import referencesFetcher from './libs/api/referencesFetcher';
 import setupBrowser from './libs/utils/setupBrowser';
+import * as refden from './libs/api/refden';
 
 setupBrowser();
 
@@ -44,12 +45,16 @@ const setReferences = async (dois) => {
   }
 };
 
-const handleOnAdd = event => {
+const handleOnAdd = async(event) => {
   if (event.target.tagName !== 'BUTTON' && event.target.className !== 'add-button') return;
 
   const { doi, title } = event.target.dataset;
+  const lists = await refden.getLists();
 
-  browser.storage.sync.set({ selectedReference: { doi, title } });
+  chrome.storage.session.set({
+    selectedReference: { doi, title },
+    lists,
+  });
   window.location.href = 'views/reference-form.html';
 };
 

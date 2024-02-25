@@ -3,33 +3,37 @@ import { FROM_CONTENT__SHOW_PAGE_ACTION } from '../messages';
 import enablePageActionForTab from './enablePageActionForTab';
 
 describe('enablePageActionForTab()', () => {
-  it('calls browser.pageAction.show and store lists', async () => {
-    global.browser = {
+  it('calls chrome.action.show and store lists', async () => {
+    global.chrome = {
       storage: {
-        sync: { set: jest.fn() },
+        session: { set: jest.fn() },
       },
-      pageAction: { show: jest.fn() },
+      action: {
+        show: jest.fn(),
+        enable: jest.fn(),
+      },
     };
     const tabId = 1;
     const sender = {
       tab: { id: tabId },
     };
     const lists = [{ id: 1, name: 'Cancer' }];
-    refden.getLists = jest.fn(() => Promise.resolve({ data: lists }));
+    refden.getLists = jest.fn(() => Promise.resolve(lists));
 
     await enablePageActionForTab(FROM_CONTENT__SHOW_PAGE_ACTION, sender);
 
     expect(refden.getLists).toHaveBeenCalledTimes(1);
-    expect(browser.pageAction.show).toHaveBeenCalledWith(tabId);
-    expect(browser.storage.sync.set).toHaveBeenCalledWith({ lists });
+    expect(chrome.action.enable).toHaveBeenCalledWith(tabId);
+    expect(chrome.storage.session.set).toHaveBeenCalledWith({ lists });
   });
 
   describe('when request fails', () => {
     it('shows need login popup', async () => {
-      global.browser = {
-        pageAction: {
+      global.chrome = {
+        action: {
           show: jest.fn(),
           setPopup: jest.fn(),
+          enable: jest.fn(),
         },
       };
       const tabId = 1;
@@ -40,7 +44,7 @@ describe('enablePageActionForTab()', () => {
 
       await enablePageActionForTab(FROM_CONTENT__SHOW_PAGE_ACTION, sender);
 
-      expect(browser.pageAction.setPopup).toHaveBeenCalledWith({
+      expect(chrome.action.setPopup).toHaveBeenCalledWith({
         tabId,
         popup: 'need-login.html',
       });
@@ -48,9 +52,9 @@ describe('enablePageActionForTab()', () => {
   });
 
   describe('when another message is passed', () => {
-    it('doesnt call browser.pageAction.show', async () => {
+    it('doesnt call browser.action.show', async () => {
       global.browser = {
-        pageAction: { show: jest.fn() }
+        action: { show: jest.fn() }
       };
       const message = 'YOLO';
       const tabId = 1;
@@ -60,7 +64,7 @@ describe('enablePageActionForTab()', () => {
 
       await enablePageActionForTab(message, sender);
 
-      expect(browser.pageAction.show).not.toHaveBeenCalledWith(tabId);
+      expect(browser.action.show).not.toHaveBeenCalledWith(tabId);
     });
   });
 });

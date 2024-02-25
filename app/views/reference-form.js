@@ -19,8 +19,8 @@ const populateLists = lists => {
   });
 };
 
-const populateForm = () => {
-  browser.storage.sync.get(['selectedReference', 'lists'], storageArea => {
+const populateForm = async () => {
+  chrome.storage.session.get(['selectedReference', 'lists']).then((storageArea) => {
     const { doi, title } = storageArea.selectedReference;
 
     document.getElementById('doi').value = doi;
@@ -29,8 +29,8 @@ const populateForm = () => {
   });
 };
 
-const initForm = () => {
-  populateForm();
+const initForm = async () => {
+  await populateForm();
   addOnSubmitHandler(document);
 
   $('#lists').select2({ tags: true });

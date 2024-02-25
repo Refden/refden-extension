@@ -15,8 +15,8 @@
   },
   "dependencies": {
     "@sentry/browser": "^5.11.1",
+    "@vespaiach/axios-fetch-adapter": "^0.3.1",
     "autosize": "^4.0.2",
-    "axios": "^0.21.1",
     "jquery": "^3.5.1",
     "lodash": "^4.17.13",
     "select2": "^4.0.13",
@@ -25,7 +25,6 @@
   "devDependencies": {
     "@babel/core": "^7.10.2",
     "@babel/preset-env": "^7.10.2",
-    "axios-mock-adapter": "^1.10.0",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^25.1.0",
     "babel-loader": "^8.1.0",
