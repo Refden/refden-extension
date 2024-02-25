@@ -33,7 +33,8 @@ Go to `about:debugging` and load temporary the extension or run `yarn web-ext ru
 - Compress files with app folder and submit: `yarn web-ext build -s app`
 - Provide source code from Github.
 
-## Notes
+## Resources
 
 - Alternative api endpoint: https://api.crossref.org/works/10.5555/487hjd 
 (From: https://www.crossref.org/education/retrieve-metadata/rest-api/a-non-technical-introduction-to-our-api/)
+- https://developer.chrome.com/docs/extensions/reference/api/storage

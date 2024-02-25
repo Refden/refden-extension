@@ -6,6 +6,7 @@ module.exports = {
   },
   globals: {
     browser: true,
+    chrome: true,
     global: true,
   },
   extends: [
