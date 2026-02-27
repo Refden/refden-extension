@@ -52,5 +52,6 @@
     "moduleNameMapper": {
       "\\.css$": "identity-obj-proxy"
     }
-  }
+  },
+  "packageManager": "yarn@4.12.0"
 }
