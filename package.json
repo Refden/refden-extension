@@ -36,7 +36,7 @@
     "jsdom": "^16.0.1",
     "regenerator-runtime": "^0.13.5",
     "style-loader": "^3.3.4",
-    "web-ext": "^5.4.0",
+    "web-ext": "^9.3.0",
     "webpack": "^5.90.3",
     "webpack-cli": "^5.1.4",
     "webpack-notifier": "^1.15.0"
