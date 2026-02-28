@@ -1,36 +1,36 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "Refden",
   "author": "Refden",
   "description": "Extension for adding references to refden.com",
   "version": "3.1.0",
-  "applications": {
-    "gecko": {
-      "id": "support@refden.co"
-    }
-  },
-  "background": {
-    "scripts": ["dist/build/background/bundle.js"]
-  },
   "icons": {
     "16": "icon16.png",
     "48": "icon48.png",
     "128": "icon128.png"
   },
-  "page_action": {
+  "action": {
     "default_icon": "icon.png",
     "default_popup": "popup.html",
     "default_title": "Refden"
   },
+  "background": {
+    "scripts": ["dist/build/background/bundle.js"]
+  },
+  "host_permissions": [
+    "<all_urls>"
+  ],
   "permissions": [
-    "storage",
-     "https://doi.org/",
-     "https://www.refden.co/",
-     "https://www.refden.com/"
+    "storage"
   ],
   "content_scripts": [{
     "matches": ["<all_urls>"],
     "js": ["dist/build/app/bundle.js"],
     "run_at": "document_idle"
-  }]
+  }],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "support@refden.com"
+    }
+  }
 }

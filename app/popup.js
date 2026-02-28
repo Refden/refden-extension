@@ -60,7 +60,9 @@ const handleOnAdd = async(event) => {
 
 const showReferences = tabs => {
   const tabId = tabs[0].id;
-  browser.tabs.sendMessage(tabId, FROM_POPUP__SHOW_REFERENCES, setReferences);
+  browser.tabs.sendMessage(tabId, FROM_POPUP__SHOW_REFERENCES)
+    .then(setReferences)
+    .catch(error => console.error('showReferences error:', error));
 
   document.addEventListener('click', handleOnAdd);
 };

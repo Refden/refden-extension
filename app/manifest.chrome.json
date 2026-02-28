@@ -21,7 +21,6 @@
   ],
   "host_permissions": [
     "https://doi.org/",
-    "https://www.refden.co/",
     "https://www.refden.com/"
   ],
   "content_scripts": [{
