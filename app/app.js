@@ -4,11 +4,16 @@ import informBackgroundTabShouldHavePageAction from './libs/services/informBackg
 import findReferences from './libs/listeners/findReferences';
 import setupBrowser from './libs/utils/setupBrowser';
 
-init({
-  dsn: 'https://ef8e3b5f472c409e9cd71ecc6c3611dc@sentry.io/1367650',
-});
-
 setupBrowser();
 
+try {
+  init({
+    dsn: 'https://ef8e3b5f472c409e9cd71ecc6c3611dc@sentry.io/1367650',
+  });
+} catch (e) {
+  console.error('Sentry init failed:', e);
+}
+
 informBackgroundTabShouldHavePageAction();
+
 browser.runtime.onMessage.addListener(findReferences);
