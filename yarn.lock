@@ -2157,70 +2157,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sentry/browser@npm:^5.11.1":
-  version: 5.30.0
-  resolution: "@sentry/browser@npm:5.30.0"
-  dependencies:
-    "@sentry/core": "npm:5.30.0"
-    "@sentry/types": "npm:5.30.0"
-    "@sentry/utils": "npm:5.30.0"
-    tslib: "npm:^1.9.3"
-  checksum: 10c0/6793e1b49a8cdb1f025115bcc591bf67c97b6515f62a33ffcbb7b1ab66e459ebc471797d02e471be1ebf14092b56eb25ed914f043962388cc224bc961e334a17
-  languageName: node
-  linkType: hard
-
-"@sentry/core@npm:5.30.0":
-  version: 5.30.0
-  resolution: "@sentry/core@npm:5.30.0"
-  dependencies:
-    "@sentry/hub": "npm:5.30.0"
-    "@sentry/minimal": "npm:5.30.0"
-    "@sentry/types": "npm:5.30.0"
-    "@sentry/utils": "npm:5.30.0"
-    tslib: "npm:^1.9.3"
-  checksum: 10c0/6407b9c2a6a56f90c198f5714b3257df24d89d1b4ca6726bd44760d0adabc25798b69fef2c88ccea461c7e79e3c78861aaebfd51fd3cb892aee656c3f7e11801
-  languageName: node
-  linkType: hard
-
-"@sentry/hub@npm:5.30.0":
-  version: 5.30.0
-  resolution: "@sentry/hub@npm:5.30.0"
-  dependencies:
-    "@sentry/types": "npm:5.30.0"
-    "@sentry/utils": "npm:5.30.0"
-    tslib: "npm:^1.9.3"
-  checksum: 10c0/386c91d06aa44be0465fc11330d748a113e464d41cd562a9e1d222a682cbcb14e697a3e640953e7a0239997ad8a02b223a0df3d9e1d8816cb823fd3613be3e2f
-  languageName: node
-  linkType: hard
-
-"@sentry/minimal@npm:5.30.0":
-  version: 5.30.0
-  resolution: "@sentry/minimal@npm:5.30.0"
-  dependencies:
-    "@sentry/hub": "npm:5.30.0"
-    "@sentry/types": "npm:5.30.0"
-    tslib: "npm:^1.9.3"
-  checksum: 10c0/34ec05503de46d01f98c94701475d5d89cc044892c86ccce30e01f62f28344eb23b718e7cf573815e46f30a4ac9da3129bed9b3d20c822938acfb40cbe72437b
-  languageName: node
-  linkType: hard
-
-"@sentry/types@npm:5.30.0":
-  version: 5.30.0
-  resolution: "@sentry/types@npm:5.30.0"
-  checksum: 10c0/99c6e55c0a82c8ca95be2e9dbb35f581b29e4ff7af74b23bc62b690de4e35febfa15868184a2303480ef86babd4fea5273cf3b5ddf4a27685b841a72f13a0c88
-  languageName: node
-  linkType: hard
-
-"@sentry/utils@npm:5.30.0":
-  version: 5.30.0
-  resolution: "@sentry/utils@npm:5.30.0"
-  dependencies:
-    "@sentry/types": "npm:5.30.0"
-    tslib: "npm:^1.9.3"
-  checksum: 10c0/ca8eebfea7ac7db6d16f6c0b8a66ac62587df12a79ce9d0d8393f4d69880bb8d40d438f9810f7fb107a9880fe0d68bbf797b89cbafd113e89a0829eb06b205f8
-  languageName: node
-  linkType: hard
-
 "@sinonjs/commons@npm:^1.7.0":
   version: 1.8.2
   resolution: "@sinonjs/commons@npm:1.8.2"
@@ -8711,7 +8647,6 @@ __metadata:
   dependencies:
     "@babel/core": "npm:^7.23.9"
     "@babel/preset-env": "npm:^7.23.9"
-    "@sentry/browser": "npm:^5.11.1"
     "@vespaiach/axios-fetch-adapter": "npm:^0.3.1"
     autosize: "npm:^4.0.2"
     babel-jest: "npm:^25.1.0"
@@ -10161,7 +10096,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tslib@npm:^1.8.1, tslib@npm:^1.9.0, tslib@npm:^1.9.3":
+"tslib@npm:^1.8.1, tslib@npm:^1.9.0":
   version: 1.14.1
   resolution: "tslib@npm:1.14.1"
   checksum: 10c0/69ae09c49eea644bc5ebe1bca4fa4cc2c82b7b3e02f43b84bd891504edf66dbc6b2ec0eef31a957042de2269139e4acff911e6d186a258fb14069cd7f6febce2

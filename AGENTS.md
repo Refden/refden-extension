@@ -183,4 +183,3 @@ Key libraries used:
 - **jQuery**: DOM manipulation
 - **select2**: Dropdown enhancement
 - **toastr**: Notification messages
-- **@sentry/browser**: Error tracking
