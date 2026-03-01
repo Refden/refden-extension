@@ -17,7 +17,7 @@
     "@vespaiach/axios-fetch-adapter": "^0.3.1",
     "autosize": "^4.0.2",
     "jquery": "^3.5.1",
-    "lodash": "^4.17.13",
+    "lodash": "^4.17.23",
     "select2": "^4.0.13",
     "toastr": "^2.1.4"
   },
