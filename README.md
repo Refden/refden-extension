@@ -21,7 +21,7 @@ Go to `about:debugging` and load temporary the extension or run `yarn web-ext ru
 ### Chrome
 
 - Guide: https://developer.chrome.com/webstore/publish
-- Run `yarn:compress` (Webpack in production & compress app folder)
+- Run `yarn compress` (Webpack in production & compress app folder)
 - Submit
 
 ### Firefox
