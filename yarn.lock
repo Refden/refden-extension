@@ -6888,10 +6888,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jquery@npm:>=1.12.0, jquery@npm:^3.5.1":
+"jquery@npm:>=1.12.0":
   version: 3.6.0
   resolution: "jquery@npm:3.6.0"
   checksum: 10c0/45a63f8376a8918087c0277b2394dd382fcacff765c41ccbb5009a9336f8c971bf41c6a0519062edc1dff6333d96959c3a3ec55c95eb6c94d5372253d6cbf82f
+  languageName: node
+  linkType: hard
+
+"jquery@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "jquery@npm:4.0.0"
+  checksum: 10c0/06d8d0f51121af5a691f8b59c74823157bb5b60eea915b30eaa920d6c0ffd91e60ba81e9b97bd8203f331f9dd8d0ec9a4b010935ea314bdd2f15453c29bc780b
   languageName: node
   linkType: hard
 
@@ -8751,7 +8758,7 @@ __metadata:
     eslint-plugin-jest: "npm:^23.6.0"
     identity-obj-proxy: "npm:^3.0.0"
     jest: "npm:^25.1.0"
-    jquery: "npm:^3.5.1"
+    jquery: "npm:^4.0.0"
     jsdom: "npm:^16.0.1"
     lodash: "npm:^4.18.1"
     regenerator-runtime: "npm:^0.13.5"
