@@ -8565,7 +8565,7 @@ __metadata:
     jsdom: "npm:^16.0.1"
     lodash: "npm:^4.18.1"
     regenerator-runtime: "npm:^0.13.5"
-    select2: "npm:^4.0.13"
+    select2: "npm:^4.1.0"
     style-loader: "npm:^4.0.0"
     toastr: "npm:^2.1.4"
     web-ext: "npm:^10.1.0"
@@ -9080,10 +9080,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"select2@npm:^4.0.13":
-  version: 4.0.13
-  resolution: "select2@npm:4.0.13"
-  checksum: 10c0/a393866565a5f878ca21276ed32793595851debb35ff48a8c368640e732619349f547d335b438b45ff5647145eb6c5af868cd5153740de58306a2dca2498550f
+"select2@npm:^4.1.0":
+  version: 4.1.0
+  resolution: "select2@npm:4.1.0"
+  checksum: 10c0/4cb595600e91a319473013ffdf37cc14cfdb31ba3c0a930a0b652cbd924abccce17b1f45630d073da18ad820ecd402420c57355b15b045e683ef0a96783eaf1d
   languageName: node
   linkType: hard
 
