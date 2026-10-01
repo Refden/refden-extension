@@ -37,7 +37,7 @@
     "web-ext": "^10.1.0",
     "webpack": "^5.107.2",
     "webpack-cli": "^7.0.2",
-    "webpack-notifier": "^1.15.0"
+    "webpack-notifier": "^1.17.0"
   },
   "browserslist": "> 0.25%, not dead",
   "jest": {
