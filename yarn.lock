@@ -2283,6 +2283,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/node-notifier@npm:^8.0.1":
+  version: 8.0.5
+  resolution: "@types/node-notifier@npm:8.0.5"
+  dependencies:
+    "@types/node": "npm:*"
+  checksum: 10c0/34c00375f09caba602c36cc704c24978accf99fe3b6bb788fe26693695224aee59a4cc95b7aed5c3e9fe17e02a7cde87acbdf39419f0dfed43b2338ca8f8574a
+  languageName: node
+  linkType: hard
+
 "@types/node@npm:*":
   version: 14.14.33
   resolution: "@types/node@npm:14.14.33"
@@ -8536,7 +8545,7 @@ __metadata:
     web-ext: "npm:^10.1.0"
     webpack: "npm:^5.107.2"
     webpack-cli: "npm:^7.0.2"
-    webpack-notifier: "npm:^1.15.0"
+    webpack-notifier: "npm:^1.17.0"
   languageName: unknown
   linkType: soft
 
@@ -10503,10 +10512,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"webpack-notifier@npm:^1.15.0":
-  version: 1.15.0
-  resolution: "webpack-notifier@npm:1.15.0"
+"webpack-notifier@npm:^1.17.0":
+  version: 1.17.0
+  resolution: "webpack-notifier@npm:1.17.0"
   dependencies:
+    "@types/node-notifier": "npm:^8.0.1"
     node-notifier: "npm:^9.0.0"
     strip-ansi: "npm:^6.0.0"
   peerDependencies:
@@ -10514,7 +10524,7 @@ __metadata:
   peerDependenciesMeta:
     "@types/webpack":
       optional: true
-  checksum: 10c0/9ecb94c76e73e96bb4d0b9224fe9c0e717cd2129185f0927ebc5e633a0fc404ee0512882aa73bba7dc2be2bfe654002e212f4f4895f79e95c76b84170035a1c9
+  checksum: 10c0/0f0aec263755fdc60a5ae98267a1564baeae97df0d81b0a6fd00772ca8c7568a593046093e2a7ab2f9de0ef914dadad3ec3298869afba74b22661ec24df26b20
   languageName: node
   linkType: hard
 
