@@ -24,7 +24,7 @@ const withRefdenPresence = async (references) =>
     try {
       const response = await refden.getReferencePresence(reference.DOI);
       reference.present = response.present;
-    } catch (error) {
+    } catch {
       reference.present = false;
     }
     return reference;

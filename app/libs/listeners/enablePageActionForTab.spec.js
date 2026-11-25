@@ -18,7 +18,7 @@ describe('enablePageActionForTab()', () => {
       tab: { id: tabId },
     };
     const lists = [{ id: 1, name: 'Cancer' }];
-    refden.getLists = jest.fn(() => Promise.resolve(lists));
+    jest.spyOn(refden, 'getLists').mockResolvedValue(lists);
 
     await enablePageActionForTab(FROM_CONTENT__SHOW_PAGE_ACTION, sender);
 
@@ -40,7 +40,7 @@ describe('enablePageActionForTab()', () => {
       const sender = {
         tab: { id: tabId },
       };
-      refden.getLists = jest.fn(() => Promise.reject('Error'));
+      jest.spyOn(refden, 'getLists').mockRejectedValue('Error');
 
       await enablePageActionForTab(FROM_CONTENT__SHOW_PAGE_ACTION, sender);
 

@@ -26,7 +26,7 @@ describe('addOnSubmitHandler()', () => {
       const form = document.getElementById('form');
       const formData = {};
       global.FormData = jest.fn(() => formData);
-      refden.postReference = jest.fn(() => Promise.resolve({}));
+      jest.spyOn(refden, 'postReference').mockResolvedValue({});
 
       addOnSubmitHandler(document);
       const actual = form.onsubmit();
