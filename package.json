@@ -47,7 +47,7 @@
     "fx-runner@npm:1.6.0": "npm:1.7.0",
     "glob@npm:^13.0.0": "npm:14.0.6",
     "node-notifier@npm:^6.0.0": "npm:9.0.1",
-    "qs@npm:~6.5.2": "npm:6.14.1",
+    "qs@npm:~6.5.2": "npm:6.17.1",
     "tmp@npm:^0.0.33": "npm:0.2.7",
     "tough-cookie@npm:^4.0.0": "npm:4.1.4"
   },
